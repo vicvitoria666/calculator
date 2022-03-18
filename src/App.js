@@ -1,25 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends Component {
+  state = {
+    n1: "",
+    n2: "",
+    res: ""
+  };
+
+  div = () => {
+    const { n1, n2 } = this.state;
+    this.setState({
+      res: n1 / n2
+    });
+  };
+
+  som = () => {
+    const { n1, n2 } = this.state;
+    this.setState({
+      res: n1 + n2
+    });
+  };
+
+  sub = () => {
+    const { n1, n2 } = this.state;
+    this.setState({
+      res: n1 - n2
+    });
+  };
+
+  mul = () => {
+    const { n1, n2 } = this.state;
+    this.setState({
+      res: n1 * n2
+    });
+  };
+
+  handleChange2 = (event) => {
+    this.setState({
+      n2: Number(event.target.value)
+    });
+  };
+
+  handleChange1 = (event) => {
+    this.setState({
+      n1: Number(event.target.value)
+    });
+  };
+
+  remove = () => {
+    this.setState({
+      n1: '',
+      n2: '',
+      res: ''
+    })
+  }
+
+
+  render() {
+    return (
+      <div>
+        <h1>Calc App</h1>
+        <input onChange={this.handleChange1} />
+        <input onChange={this.handleChange2} />
+        <button onClick={this.div}>/</button>
+        <button onClick={this.mul}>*</button>
+        <button onClick={this.sub}>-</button>
+        <button onClick={this.som}>+</button>
+        <button onClick={this.remove}>Delete</button>
+
+      <h3> {this.state.res} </h3>
+
+      </div>
+    );
+  }
 }
 
 export default App;

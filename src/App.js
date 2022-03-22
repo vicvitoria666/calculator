@@ -51,7 +51,7 @@ export class App extends Component {
     this.setState({
       n1: '',
       n2: '',
-      res: ''
+      res: '',
     })
   }
 
@@ -60,8 +60,8 @@ export class App extends Component {
     return (
       <div>
         <h1>Calc App</h1>
-        <input onChange={this.handleChange1} />
-        <input onChange={this.handleChange2} />
+        <input onChange={this.handleChange1} value={this.state.n1} />
+        <input onChange={this.handleChange2} value={this.state.n2} />
         <button onClick={this.div}>/</button>
         <button onClick={this.mul}>*</button>
         <button onClick={this.sub}>-</button>
